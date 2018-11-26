@@ -1,2 +1,2 @@
 # innocentSpider
-Webspider against anti-bot methods 
+Webspider against anti-bot solution 
