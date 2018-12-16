@@ -1,6 +1,6 @@
 # innocentSpider
 Webspider against anti-bot solution <br>
-Python is hard to handle the anti-bot javascript, which will block the request if itself cannot run correctly. Selenium is detectable by the anti-bot javascript. Maybe self-made google apps can beat some anti-bot solutions. <br>
+Python is hard to handle the anti-bot javascript, which will block the request if itself cannot run correctly. Selenium is detectable by the anti-bot javascript. Maybe a self-made google extension can beat some anti-bot solutions. <br>
 Idea: An extension communicates with a Python-based web app server for the url input. It direct the page creation and extraction. Then it sends the DOM back to Python. <br>
 <p>
 Usage: <br>
