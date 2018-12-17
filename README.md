@@ -1,10 +1,14 @@
 # innocentSpider
-Webspider against anti-bot solution <br>
-Python is hard to handle the anti-bot javascript, which will block the request if itself cannot run correctly. Selenium is detectable by the anti-bot javascript. Maybe a self-made google extension can beat some anti-bot solutions. <br>
-Idea: An extension communicates with a Python-based web app server for the url input. It directs the page creation and the DOM extraction. Then it sends the DOM back to Python. <br>
+An experimental webspider against the anti-bot solution <br>
+Some website might require the execution of an anti-bot javascript to proceed, which blocks the traditional Python-based webspider since it is hard to handle the anti-bot javascript. Selenium is also detectable by the anti-bot javascript. Maybe a self-made google extension can beat some anti-bot solutions. <br>
+Idea: A web browser extension can
+1. Get url input from a Python-based web app server. 
+2. Open the pages and extract the DOM. 
+3. Send the DOM back to app server. 
+4. Beatifulsoup works on the DOM and sqlite documents the outcomes.
 <p>
 Usage: <br>
-  Use flask_apps.ipynb to run a python-based web app server, where one endpoint provides the extension urls to scrape and the another receive DOM from it.<br>
+Use flask_apps.ipynb to run a python-based web app server, where one endpoint provides the extension urls to scrape and the another receives the DOM from it.<br>
   Open chrome://extensions/ and turn on the develop mode. Load the unpacked innocentSpider/ChromeExtension/ directory. Then a pop-up button can begin the scraping. 
   
 <p><p><br>
