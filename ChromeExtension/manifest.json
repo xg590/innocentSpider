@@ -2,7 +2,7 @@
   "name": "Entension",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["tabs", "https://www.w3schools.com/*", "https://yzlab3.chem.nyu.edu/*"], 
+  "permissions": ["tabs", "https://www.w3schools.com/*", "https://*.ny.gov/"], 
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
