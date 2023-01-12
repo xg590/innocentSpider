@@ -9,19 +9,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		objReq.addEventListener("load", function () {
 			var resp = JSON.parse(objReq.responseText);
 			// 3. Loop over urls
+			let delay = document.getElementById('delay').value * 1000;
 			for (var i = 0; i < resp.url.length; ++i) {
 				TABCOUNT++;
-				var createProperties = {url: resp.url[i], active: false};
+				let createProperties = {url: resp.url[i], active: false}; 
 				// 4. Open new webpage for each url, in which content_script.js runs
-				chrome.tabs.create(createProperties, function (tab) {
-					// 5. content_script.js will process each newly opened webpage.
-					//    and send back DOM of each webpage
-					//    It will fire chrome.runtime.onConnect.addListener();
-					//    see https://developer.chrome.com/docs/extensions/mv3/messaging/#connect
-					chrome.scripting.executeScript({
-						target: {tabId: tab.id}, files: ["content_script.js"]
+				setTimeout(function() {
+					chrome.tabs.create(createProperties, function (tab) {
+						// 5. content_script.js will process each newly opened webpage.
+						//    and send back DOM of each webpage
+						//    It will fire chrome.runtime.onConnect.addListener();
+						//    see https://developer.chrome.com/docs/extensions/mv3/messaging/#connect
+						chrome.scripting.executeScript({
+							target: {tabId: tab.id}, files: ["content_script.js"]
+						});
 					});
-				});
+				}, i * delay);
 			}
 		});
 		// 6. POST request
@@ -50,11 +53,11 @@ function send_message_to_python(url, doc) {
 	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	if (!TABCOUNT) {
 		// If you close the popup.html too early, popup.js will stop before content_script.js and port (message passing) will fail.
-		// TABCOUNT == 0, OK to close 
-		oReq.addEventListener("load", function () { 
-			document.getElementById('scrape').innerHTML = "Begin<br/>Scraping"; 
+		// TABCOUNT == 0, OK to close
+		oReq.addEventListener("load", function () {
+			document.getElementById('scrape').innerHTML = "Begin<br/>Scraping";
 			var oReqCommit = new XMLHttpRequest();
-			oReqCommit.open('GET', ''.concat('http://', IP, ':', PORT, '/commit'), true);  
+			oReqCommit.open('GET', ''.concat('http://', IP, ':', PORT, '/commit'), true);
 			oReqCommit.send();
 		});
 	}

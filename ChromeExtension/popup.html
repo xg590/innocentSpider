@@ -16,20 +16,22 @@
     <body>
 		<table>
 			<tr>
-				<th>IP</th> 
-				<td><input type="text" id="ip" value="192.168.56.103"></td> 
-			</tr>                              
-			<tr>                               
+				<th style="width:25px">IP</th> 
+				<td><input style="width:120px" type="text" id="ip" value="192.168.56.103"></td> 
 				<th>Port</th>                  
-				<td><input type="text" id="port" value="9999"></td> 
+				<td><input style="width:40px" type="text" id="port" value="9999"></td> 
+			</tr>                        
+			<tr>      
+				<td><input style="width:25px" type="text" id="delay" value="0.1"></td>              
+				<th colspan="3">sec delay between page opennings</th>  
 			</tr> 
 			<tr>
 				<th>URL</th> 
-				<td><textarea id="urls" rows="3" cols="25" placeholder="https://www.google.com/
+				<td colspan="3"><textarea id="urls" rows="3" cols="25" placeholder="https://www.google.com/
 https://www.amazon.com/"></textarea></td> 
 			</tr> 
-			<tr>
-				<td colspan="2"><button id="scrape">Begin<br/>Scraping</button></td>   
+			<tr>  
+				<td colspan="4"><button id="scrape">Begin<br/>Scraping</button></td>   
 			</tr> 
 		</table> 
     </body>
